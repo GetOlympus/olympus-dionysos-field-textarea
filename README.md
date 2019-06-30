@@ -1,8 +1,7 @@
 # Textarea Field ![For Olympus](https://img.shields.io/badge/for-Olympus-44cc11.svg?style=flat-square) ![For WordPress](https://img.shields.io/badge/for-WordPress-00aadc.svg?style=flat-square)
 
 _This component is a part of the [**Olympus Zeus Core**](https://github.com/GetOlympus/Zeus-Core) **WordPress** framework._  
-
-![Thumbnail](https://www.filepicker.io/api/file/7oAeQxj5TsyIhgkGWPcp)
+_It uses the default WordPress RTE field and adds a counter JS component on textarea field._  
 
 ---
 

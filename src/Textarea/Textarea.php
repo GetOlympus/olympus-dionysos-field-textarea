@@ -20,41 +20,66 @@ use GetOlympus\Zeus\Translate\Controller\Translate;
 class Textarea extends Field
 {
     /**
-     * Prepare variables.
+     * @var string
      */
-    protected function setVars()
+    protected $script = 'js'.S.'textarea.js';
+
+    /**
+     * @var string
+     */
+    protected $style = 'css'.S.'textarea.css';
+
+    /**
+     * @var string
+     */
+    protected $template = 'textarea.html.twig';
+
+    /**
+     * @var string
+     */
+    protected $textdomain = 'textareafield';
+
+    /**
+     * Prepare defaults.
+     *
+     * @return array
+     */
+    protected function getDefaults()
     {
-        $this->getModel()->setFaIcon('fa-text-height');
-        $this->getModel()->setScript('js'.S.'textarea.js');
-        $this->getModel()->setStyle('css'.S.'textarea.css');
-        $this->getModel()->setTemplate('textarea.html.twig');
+        return [
+            'title' => Translate::t('textarea.title', $this->textdomain),
+            'default' => '',
+            'description' => '',
+            'mode' => 'default',
+            'placeholder' => '',
+            'rows' => 8,
+            'settings' => [
+                'rte' => [
+                    'teeny' => false,
+                    'textarea_rows' => 8,
+                ]
+            ],
+        ];
     }
 
     /**
-     * Prepare HTML component.
+     * Prepare variables.
      *
-     * @param array $content
-     * @param array $details
+     * @param  object  $value
+     * @param  array   $contents
+     *
+     * @return array
      */
-    protected function getVars($content, $details = [])
+    protected function getVars($value, $contents)
     {
-        // Build defaults
-        $defaults = [
-            'id' => '',
-            'title' => Translate::t('textarea.title', [], 'textareafield'),
-            'default' => '',
-            'description' => '',
-            'placeholder' => '',
-            'rows' => 8,
-        ];
+        // Get contents
+        $vars = $contents;
 
-        // Build defaults data
-        $vars = array_merge($defaults, $content);
-
-        // Retrieve field value
-        $vars['val'] = $this->getValue($content['id'], $details, $vars['default']);
+        // Mode
+        $vars['mode'] = isset($contents['mode']) ? $contents['mode'] : '';
+        $vars['mode'] = in_array($vars['mode'], ['default', 'rte']) ? $vars['mode'] : 'default';
 
         // Update vars
-        $this->getModel()->setVars($vars);
+        return $vars;
     }
 }

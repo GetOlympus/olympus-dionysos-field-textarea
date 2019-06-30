@@ -1,15 +1,19 @@
 /*!
  * textarea.js v2.0.0
- * https://github.com/crewstyle/OlympusZeus
+ * https://github.com/GetOlympus/olympus-textarea-field
  *
  * This plugin adds a counter in all textarea flieds.
  *
  * Example of JS:
- *      $('textarea').olTextarea();
+ *      $('textarea').zeusTextarea({
+ *          container: 'fieldset',                      //node element containing textarea and container
+ *          counter: '.counter'                         //counter element to update
+ *      });
  *
  * Example of HTML:
  *      <fieldset>
  *          <textarea></textarea>
+ *          <span class="counter"></span>
  *      </fieldset>
  *
  * Copyright 2016 Achraf Chouk
@@ -19,63 +23,66 @@
 (function ($){
     "use strict";
 
-    var OlTextarea = function ($el){
-        var _ol = this;
-        _ol.$el = $el;
+    var Textarea = function ($el,options){
+        //vars
+        var _this = this;
+        _this.$el = $el;
+        _this.options = options;
+
+        //update container
+        _this.$container = _this.$el.closest(_this.options.container);
+
+        //update counter
+        _this.$counter = _this.$container.find(_this.options.counter);
 
         //initialize
-        _ol.init();
+        _this.init();
     };
 
-    OlTextarea.prototype.$el = null;
-    OlTextarea.prototype.$counter = null;
+    Textarea.prototype.$el = null;
+    Textarea.prototype.$container = null;
+    Textarea.prototype.$counter = null;
+    Textarea.prototype.options = null;
 
-    OlTextarea.prototype.init = function (){
-        var _ol = this;
+    Textarea.prototype.init = function (){
+        var _this = this;
 
-        //create counter
-        _ol.$counter = $(document.createElement('span')).addClass('counter');
-        _ol.$counter.text(_ol.$el.val().length);
-
-        //append counter
-        _ol.$counter.insertAfter(_ol.$el);
+        //update counter
+        _this.$counter.text(_this.$el.val().length);
 
         //bind all event
-        _ol.$el.on('blur', $.proxy(_ol.getBlur, _ol));
-        _ol.$el.on('focus', $.proxy(_ol.getFocus, _ol));
-        _ol.$el.on('keyup', $.proxy(_ol.charCounter, _ol));
+        _this.$el.on('keyup', $.proxy(_this.charCounter, _this));
     };
 
-    OlTextarea.prototype.charCounter = function (){
-        var _ol = this;
-        _ol.$counter.text(_ol.$el.val().length);
-    };
-
-    OlTextarea.prototype.getBlur = function (){
-        var _ol = this;
-        _ol.$counter.removeClass('on');
-    };
-
-    OlTextarea.prototype.getFocus = function (){
-        var _ol = this;
-        _ol.$counter.addClass('on');
+    Textarea.prototype.charCounter = function (){
+        var _this = this;
+        _this.$counter.text(_this.$el.val().length);
     };
 
     var methods = {
-        init: function (){
+        init: function (options){
             if (!this.length) {
                 return false;
             }
 
+            var settings = {
+                container: 'fieldset',
+                counter: '.counter'
+            };
+
             return this.each(function (){
-                new OlTextarea($(this));
+                if (options) {
+                    $.extend(settings, options);
+                }
+
+                new Textarea($(this), settings);
             });
         },
         update: function (){},
         destroy: function (){}
     };
 
-    $.fn.olTextarea = function (method){
+    $.fn.zeusTextarea = function (method){
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
         }
@@ -83,7 +90,7 @@
             return methods.init.apply(this, arguments);
         }
         else {
-            $.error('Method '+method+' does not exist on olTextarea');
+            $.error('Method '+method+' does not exist on zeusTextarea');
             return false;
         }
     };

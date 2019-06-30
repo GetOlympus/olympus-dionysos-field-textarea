@@ -1,11 +1,27 @@
 {% extends template_path %}
 
-{% block id %}{{ id }}_textarea{% endblock %}
-{% block label %}<label for="{{ id }}">{{ title|raw }}</label>{% endblock %}
+{% block id %}{{ identifier }}{% endblock %}
+{% block label %}<label for="{{ identifier }}-textarea">{{ title|raw }}</label>{% endblock %}
 
 {% block field %}
-    <div class="olh-field-content textarea">
-        <textarea name="{{ name }}" id="{{ id }}" rows="{{ rows }}"{{ placeholder }}>{{ val }}</textarea>
+    <div class="olz-field textarea">
+        {% if mode == 'rte' %}
+            {{ wp_editor(value, identifier, settings.rte) }}
+        {% else %}
+            <textarea name="{{ name }}" id="{{ identifier }}-textarea" class="large-text" rows="{{ rows }}" placeholder="{{ placeholder }}">{{ value }}</textarea>
+            <span class="counter"></span>
+
+            <script>
+                (function($) {
+                    $(document).ready(function() {
+                        $("#{{ identifier }}-textarea").zeusTextarea({
+                            container: ".olz-field.textarea",
+                            counter: ".counter"
+                        });
+                    });
+                })(jQuery);
+            </script>
+        {% endif %}
     </div>
 {% endblock %}
 
