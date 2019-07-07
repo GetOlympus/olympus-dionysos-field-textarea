@@ -6,7 +6,7 @@
 {% block field %}
     <div class="olz-field textarea">
         {% if mode == 'rte' %}
-            {{ wp_editor(value, identifier, settings.rte) }}
+            {{ wp_editor(value, identifier, settings) }}
         {% else %}
             <textarea name="{{ name }}" id="{{ identifier }}-textarea" class="large-text" rows="{{ rows }}" placeholder="{{ placeholder }}">{{ value }}</textarea>
             <span class="counter"></span>

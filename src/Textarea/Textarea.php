@@ -13,8 +13,6 @@ use GetOlympus\Zeus\Translate\Controller\Translate;
  * @author Achraf Chouk <achrafchouk@gmail.com>
  * @since 0.0.1
  *
- * @see https://olympus.readme.io/v1.0/docs/textarea-field
- *
  */
 
 class Textarea extends Field
@@ -53,11 +51,14 @@ class Textarea extends Field
             'mode' => 'default',
             'placeholder' => '',
             'rows' => 8,
+
+            /**
+             * RTE settings
+             * @see https://codex.wordpress.org/Function_Reference/wp_editor
+             */
             'settings' => [
-                'rte' => [
-                    'teeny' => false,
-                    'textarea_rows' => 8,
-                ]
+                'teeny' => false,
+                'textarea_rows' => 8,
             ],
         ];
     }
