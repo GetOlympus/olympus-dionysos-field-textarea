@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="https://img.icons8.com/nolan/2x/term.png">
+</p>
+
 # Textarea Field
 > This component is a part of the [**Olympus Zeus Core**][zeus-url] **WordPress** framework.  
 > It uses the default WordPress RTE field and adds a counter JS component on textarea default mode.
@@ -11,7 +15,7 @@
 Using `composer` in your PHP project:
 
 ```sh
-composer install getolympus/olympus-textarea-field
+composer require getolympus/olympus-textarea-field
 ```
 
 ## Field initialization
@@ -69,11 +73,14 @@ echo '<pre>'.htmlspecialchars($textarea).'</pre>';
 
 ## Release History
 
+* 0.0.12
+- [x] FIX: remove twig dependency from composer
+
+* 0.0.11
+- [x] FIX: remove zeus-core dependency from composer
+
 * 0.0.10
 - [x] ADD: easier way to add settings
-
-* 0.0.9
-- [x] ADD: new version compatible with Zeus-Core latest version
 
 ## Authors and Copyright
 
@@ -83,8 +90,8 @@ Achraf Chouk
 Please, read [LICENSE][license-blob] for more information.  
 [![MIT][license-image]][license-url]
 
-[https://github.com/crewstyle](https://github.com/crewstyle)  
-[http://fr.linkedin.com/in/achrafchouk](http://fr.linkedin.com/in/achrafchouk)
+<https://github.com/crewstyle>  
+<https://fr.linkedin.com/in/achrafchouk>
 
 ## Contributing
 
