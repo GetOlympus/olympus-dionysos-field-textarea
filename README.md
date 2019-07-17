@@ -24,19 +24,19 @@ Use the following lines to add a `textarea field` in your **WordPress** admin pa
 
 ```php
 return \GetOlympus\Field\Textarea::build('my_textarea_field_id', [
-    'title' => 'How do Penguins drink their cola?',
-    'default' => 'On the rocks.',
+    'title'       => 'How do Penguins drink their cola?',
+    'default'     => 'On the rocks.',
     'description' => 'A simple question to know if you will be able to survive to the Penguin domination.',
-    'mode' => 'default',
+    'mode'        => 'default',
     'placeholder' => 'Tell us how?',
-    'rows' => 8,
+    'rows'        => 8,
 
     /**
      * RTE settings
      * @see https://codex.wordpress.org/Function_Reference/wp_editor
      */
     'settings' => [
-        'teeny' => false,
+        'teeny'         => false,
         'textarea_rows' => 8,
     ]
 ]);
