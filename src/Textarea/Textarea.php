@@ -1,17 +1,16 @@
 <?php
 
-namespace GetOlympus\Field;
+namespace GetOlympus\Dionysos\Field;
 
-use GetOlympus\Zeus\Field\Controller\Field;
-use GetOlympus\Zeus\Translate\Controller\Translate;
+use GetOlympus\Zeus\Field\Field;
 
 /**
  * Builds Textarea field.
  *
- * @package Field
+ * @package    DionysosField
  * @subpackage Textarea
- * @author Achraf Chouk <achrafchouk@gmail.com>
- * @since 0.0.1
+ * @author     Achraf Chouk <achrafchouk@gmail.com>
+ * @since      0.0.1
  *
  */
 
@@ -42,10 +41,10 @@ class Textarea extends Field
      *
      * @return array
      */
-    protected function getDefaults()
+    protected function getDefaults() : array
     {
         return [
-            'title' => Translate::t('textarea.title', $this->textdomain),
+            'title' => parent::t('textarea.title', $this->textdomain),
             'default' => '',
             'description' => '',
             'mode' => 'default',
@@ -71,7 +70,7 @@ class Textarea extends Field
      *
      * @return array
      */
-    protected function getVars($value, $contents)
+    protected function getVars($value, $contents) : array
     {
         // Get contents
         $vars = $contents;
