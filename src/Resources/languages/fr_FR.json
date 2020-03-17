@@ -1,3 +1,4 @@
 {
-    "textarea.title": "Zone de texte"
+    "textarea.title": "Zone de texte",
+    "textarea.length_label": "caractère(s)."
 }

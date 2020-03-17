@@ -1,17 +1,17 @@
 /*!
  * textarea.js v2.0.0
- * https://github.com/GetOlympus/olympus-textarea-field
+ * https://github.com/GetOlympus/olympus-dionysos-field-textarea
  *
- * This plugin adds a counter in all textarea flieds.
+ * This plugin adds a simple word counter.
  *
  * Example of JS:
- *      $('textarea').zeusTextarea({
- *          container: 'fieldset',                      //node element containing textarea and container
- *          counter: '.counter'                         //counter element to update
+ *      $('.textarea-field').dionysosTextarea({
+ *          counter: '.counter', // counter element to update
+ *          field: 'textarea',   // textarea node element
  *      });
  *
  * Example of HTML:
- *      <fieldset>
+ *      <fieldset class="textarea-field">
  *          <textarea></textarea>
  *          <span class="counter"></span>
  *      </fieldset>
@@ -23,40 +23,59 @@
 (function ($){
     "use strict";
 
+    /**
+     * Constructor
+     * @param {nodeElement} $el
+     * @param {array}       options
+     */
     var Textarea = function ($el,options){
-        //vars
+        // vars
         var _this = this;
         _this.$el = $el;
         _this.options = options;
 
-        //update container
-        _this.$container = _this.$el.closest(_this.options.container);
+        // update field
+        _this.$field = _this.$el.find(_this.options.field);
 
-        //update counter
-        _this.$counter = _this.$container.find(_this.options.counter);
-
-        //initialize
-        _this.init();
-    };
-
-    Textarea.prototype.$el = null;
-    Textarea.prototype.$container = null;
-    Textarea.prototype.$counter = null;
-    Textarea.prototype.options = null;
-
-    Textarea.prototype.init = function (){
-        var _this = this;
-
-        //update counter
-        _this.$counter.text(_this.$el.val().length);
+        // update counter
+        _this.$counter = _this.$el.find(_this.options.counter);
+        _this.$counter.text(_this.$field.val().length);
 
         //bind all event
-        _this.$el.on('keyup', $.proxy(_this.charCounter, _this));
+        _this.$field.on('keyup', $.proxy(_this.char_counter, _this));
     };
 
-    Textarea.prototype.charCounter = function (){
+    /**
+     * Counter element
+     * @type {nodeElement}
+     */
+    Textarea.prototype.$counter = null;
+
+    /**
+     * Field element
+     * @type {nodeElement}
+     */
+    Textarea.prototype.$field = null;
+
+    /**
+     * Main element
+     * @type {nodeElement}
+     */
+    Textarea.prototype.$el = null;
+
+    /**
+     * Main options array
+     * @type {array}
+     */
+    Textarea.prototype.options = null;
+
+    /**
+     * Fires keyUp event on source input
+     * @param {event} e
+     */
+    Textarea.prototype.char_counter = function (){
         var _this = this;
-        _this.$counter.text(_this.$el.val().length);
+        _this.$counter.text(_this.$field.val().length);
     };
 
     var methods = {
@@ -66,8 +85,8 @@
             }
 
             var settings = {
-                container: 'fieldset',
-                counter: '.counter'
+                counter: '.counter',
+                field: 'textarea',
             };
 
             return this.each(function (){
@@ -77,12 +96,10 @@
 
                 new Textarea($(this), settings);
             });
-        },
-        update: function (){},
-        destroy: function (){}
+        }
     };
 
-    $.fn.zeusTextarea = function (method){
+    $.fn.dionysosTextarea = function (method){
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
         }
@@ -90,7 +107,7 @@
             return methods.init.apply(this, arguments);
         }
         else {
-            $.error('Method '+method+' does not exist on zeusTextarea');
+            $.error('Method '+method+' does not exist on dionysosTextarea');
             return false;
         }
     };

@@ -4,19 +4,19 @@
 {% block label %}<label for="{{ identifier }}-textarea">{{ title|raw }}</label>{% endblock %}
 
 {% block field %}
-    <div class="olz-field textarea">
+    <div id="{{ identifier }}-textarea" class="dionysos-field textarea {{ mode }}">
         {% if mode == 'rte' %}
             {{ wp_editor(value, identifier, settings) }}
         {% else %}
             <textarea name="{{ name }}" id="{{ identifier }}-textarea" class="large-text" rows="{{ rows }}" placeholder="{{ placeholder }}">{{ value }}</textarea>
-            <span class="counter"></span>
+            <span class="counter"><b></b> {{ t_length_label }}</span>
 
             <script>
                 (function($) {
                     $(document).ready(function() {
-                        $("#{{ identifier }}-textarea").zeusTextarea({
-                            container: ".olz-field.textarea",
-                            counter: ".counter"
+                        $("#{{ identifier }}-textarea").dionysosTextarea({
+                            counter: ".counter b",
+                            field: "textarea",
                         });
                     });
                 })(jQuery);

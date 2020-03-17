@@ -1,3 +1,4 @@
 {
-    "textarea.title": "Textarea"
+    "textarea.title": "Textarea",
+    "textarea.length_label": "character(s)."
 }
