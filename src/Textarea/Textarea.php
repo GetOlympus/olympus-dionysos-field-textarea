@@ -51,6 +51,9 @@ class Textarea extends Field
             'placeholder' => '',
             'rows' => 8,
 
+            // texts
+            't_length_label' => parent::t('textarea.length_label', $this->textdomain),
+
             /**
              * RTE settings
              * @see https://codex.wordpress.org/Function_Reference/wp_editor
