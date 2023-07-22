@@ -44,12 +44,14 @@ class Textarea extends Field
     protected function getDefaults() : array
     {
         return [
-            'title' => parent::t('textarea.title', $this->textdomain),
-            'default' => '',
+            'title'       => parent::t('textarea.title', $this->textdomain),
+            'default'     => '',
             'description' => '',
-            'mode' => 'default',
+            'counter'     => true,
+            'mode'        => 'default',
             'placeholder' => '',
-            'rows' => 8,
+            'readonly'    => false,
+            'rows'        => 8,
 
             // texts
             't_length_label' => parent::t('textarea.length_label', $this->textdomain),
