@@ -8,19 +8,22 @@
         {% if mode == 'rte' %}
             {{ wp_editor(value, identifier, settings) }}
         {% else %}
-            <textarea name="{{ name }}" id="{{ identifier }}-textarea" class="large-text" rows="{{ rows }}" placeholder="{{ placeholder }}">{{ value }}</textarea>
-            <span class="counter"><b></b> {{ t_length_label }}</span>
+            <textarea name="{{ name }}" id="{{ identifier }}-textarea" class="large-text" rows="{{ rows }}" placeholder="{{ placeholder }}"{{ readonly ? ' readonly' : '' }}>{{ value }}</textarea>
 
-            <script>
-                (function($) {
-                    $(document).ready(function() {
-                        $("#{{ identifier }}-textarea").dionysosTextarea({
-                            counter: ".counter b",
-                            field: "textarea",
+            {% if counter %}
+                <span class="counter"><b></b> {{ t_length_label }}</span>
+
+                <script>
+                    (function($) {
+                        $(document).ready(function() {
+                            $("#{{ identifier }}-textarea").dionysosTextarea({
+                                counter: ".counter b",
+                                field: "textarea",
+                            });
                         });
-                    });
-                })(jQuery);
-            </script>
+                    })(jQuery);
+                </script>
+            {% endif %}
         {% endif %}
     </div>
 {% endblock %}

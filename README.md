@@ -30,8 +30,10 @@ return \GetOlympus\Dionysos\Field\Textarea::build('my_textarea_field_id', [
     'title'       => 'How do Penguins drink their cola?',
     'default'     => 'On the rocks.',
     'description' => 'A simple question to know if you will be able to survive to the Penguin domination.',
+    'counter'     => true,
     'mode'        => 'default',
     'placeholder' => 'Tell us how?',
+    'readonly'    => false,
     'rows'        => 8,
 
     /**
@@ -53,15 +55,17 @@ return \GetOlympus\Dionysos\Field\Textarea::build('my_textarea_field_id', [
 
 ## Variables definitions
 
-| Variable      | Type    | Default value if not set | Accepted values |
-| ------------- | ------- | ------------------------ | --------------- |
-| `title`       | String  | `'Textarea'` | *empty* |
-| `default`     | String  | *empty* | *empty* |
-| `description` | String  | *empty* | *empty* |
-| `mode`        | String  | `default` | see [Accepted mode](#accepted-mode) |
-| `placeholder` | String  | *empty* | *empty* |
-| `rows`        | Integer | `8` | `> 1` |
-| `settings`    | Array   | see [Field initialization](#field-initialization) | see [WordPress reference](https://codex.wordpress.org/Function_Reference/wp_editor) |
+| Variable      | Type    | Default value | Accepted value | Description |
+| :------------ | :------ | :------------ | :------------- | :---------- |
+| `title`       | String  | `'Textarea'` | *empty* | |
+| `default`     | String  | *empty* | *empty* | Sets default value if none found |
+| `description` | String  | *empty* | *empty* | |
+| `counter`     | Boolean | `true` | `true` or `false` | Defines whether or not to display the counter widget |
+| `mode`        | String  | `default` | see [Accepted mode](#accepted-mode) | |
+| `placeholder` | String  | *empty* | *empty* | For `default` mode only |
+| `readonly`    | Boolean | `false` | `true` or `false` | Defines whether or not to allow modification |
+| `rows`        | Integer | `8` | `> 1` | |
+| `settings`    | Array   | see [Field initialization](#field-initialization) | see [WordPress reference](https://codex.wordpress.org/Function_Reference/wp_editor) | For `rte` mode only |
 
 ## Accepted mode
 
@@ -71,7 +75,7 @@ return \GetOlympus\Dionysos\Field\Textarea::build('my_textarea_field_id', [
 ## Texts definition
 
 | Code | Default value | Definition |
-| ---- | ------------- | ---------- |
+| :--- | :------------ | :--------- |
 | `t_length_label` | characters. | Used to display characters counter as `%d characters.` |
 
 ## Retrive data
@@ -87,6 +91,10 @@ echo '<pre>'.htmlspecialchars($textarea).'</pre>';
 ```
 
 ## Release History
+
+0.0.15
+- Add new `counter` and `readonly` variables
+- Fix README content
 
 0.0.14
 - Display now compatible with new Zeus-Core version
