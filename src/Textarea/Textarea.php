@@ -48,22 +48,12 @@ class Textarea extends Field
             'default'     => '',
             'description' => '',
             'counter'     => true,
-            'mode'        => 'default',
             'placeholder' => '',
             'readonly'    => false,
             'rows'        => 8,
 
             // texts
             't_length_label' => parent::t('textarea.length_label', $this->textdomain),
-
-            /**
-             * RTE settings
-             * @see https://codex.wordpress.org/Function_Reference/wp_editor
-             */
-            'settings' => [
-                'teeny' => false,
-                'textarea_rows' => 8,
-            ],
         ];
     }
 
@@ -77,14 +67,7 @@ class Textarea extends Field
      */
     protected function getVars($value, $contents) : array
     {
-        // Get contents
-        $vars = $contents;
-
-        // Mode
-        $vars['mode'] = isset($contents['mode']) ? $contents['mode'] : '';
-        $vars['mode'] = in_array($vars['mode'], ['default', 'rte']) ? $vars['mode'] : 'default';
-
         // Update vars
-        return $vars;
+        return $contents;
     }
 }

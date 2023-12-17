@@ -4,26 +4,20 @@
 {% block label %}<label for="{{ identifier }}-textarea">{{ title|raw }}</label>{% endblock %}
 
 {% block field %}
-    <div id="{{ identifier }}-textarea" class="dionysos-field textarea {{ mode }}">
-        {% if mode == 'rte' %}
-            {{ wp_editor(value, identifier, settings) }}
-        {% else %}
-            <textarea name="{{ name }}" id="{{ identifier }}-textarea" class="large-text" rows="{{ rows }}" placeholder="{{ placeholder }}"{{ readonly ? ' readonly' : '' }}>{{ value }}</textarea>
+    <div id="{{ identifier }}-wrap" class="dionysos-field textarea {{ mode }}">
+        <textarea name="{{ name }}" id="{{ identifier }}-textarea" class="large-text" rows="{{ rows }}" placeholder="{{ placeholder }}"{{ readonly ? ' readonly' : '' }}>{{ value }}</textarea>
 
-            {% if counter %}
-                <span class="counter"><b></b> {{ t_length_label }}</span>
+        {% if counter %}
+            <span class="counter"><b></b> {{ t_length_label }}</span>
 
-                <script>
-                    (function($) {
-                        $(document).ready(function() {
-                            $("#{{ identifier }}-textarea").dionysosTextarea({
-                                counter: ".counter b",
-                                field: "textarea",
-                            });
-                        });
-                    })(jQuery);
-                </script>
-            {% endif %}
+            <script>
+                (function($) {
+                    $("#{{ identifier }}-wrap").dionysosTextarea({
+                        counter: ".counter b",
+                        field: "textarea",
+                    });
+                })(jQuery);
+            </script>
         {% endif %}
     </div>
 {% endblock %}

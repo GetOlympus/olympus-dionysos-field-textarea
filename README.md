@@ -1,6 +1,6 @@
 # Dionysos Textarea Field
 > This component is a part of the **Olympus Dionysos fields** for **WordPress**.  
-> It uses the default WordPress RTE field and adds a counter JS component on textarea default mode.
+> Adds a counter JS component on textarea.
 
 ```sh
 composer require getolympus/olympus-dionysos-field-textarea
@@ -31,7 +31,6 @@ return \GetOlympus\Dionysos\Field\Textarea::build('my_textarea_field_id', [
     'default'     => 'On the rocks.',
     'description' => 'A simple question to know if you will be able to survive to the Penguin domination.',
     'counter'     => true,
-    'mode'        => 'default',
     'placeholder' => 'Tell us how?',
     'readonly'    => false,
     'rows'        => 8,
@@ -41,15 +40,6 @@ return \GetOlympus\Dionysos\Field\Textarea::build('my_textarea_field_id', [
      * @see the `Texts definition` section below
      */
     't_length_label' => 'characters.',
-
-    /**
-     * RTE settings
-     * @see https://codex.wordpress.org/Function_Reference/wp_editor
-     */
-    'settings' => [
-        'teeny'         => false,
-        'textarea_rows' => 8,
-    ]
 ]);
 ```
 
@@ -61,16 +51,9 @@ return \GetOlympus\Dionysos\Field\Textarea::build('my_textarea_field_id', [
 | `default`     | String  | *empty* | *empty* | Sets default value if none found |
 | `description` | String  | *empty* | *empty* | |
 | `counter`     | Boolean | `true` | `true` or `false` | Defines whether or not to display the counter widget |
-| `mode`        | String  | `default` | see [Accepted mode](#accepted-mode) | |
 | `placeholder` | String  | *empty* | *empty* | For `default` mode only |
 | `readonly`    | Boolean | `false` | `true` or `false` | Defines whether or not to allow modification |
 | `rows`        | Integer | `8` | `> 1` | |
-| `settings`    | Array   | see [Field initialization](#field-initialization) | see [WordPress reference](https://codex.wordpress.org/Function_Reference/wp_editor) | For `rte` mode only |
-
-## Accepted mode
-
-* `default` to display a simple textarea field with a counter widget
-* `rte` to display a full WordPress Editor component depending on `settings`
 
 ## Texts definition
 
@@ -91,6 +74,9 @@ echo '<pre>'.htmlspecialchars($textarea).'</pre>';
 ```
 
 ## Release History
+
+0.0.16
+- Remove RTE mode from package
 
 0.0.15
 - Add new `counter` and `readonly` variables
