@@ -75,22 +75,15 @@ echo '<pre>'.htmlspecialchars($textarea).'</pre>';
 
 ## Release History
 
+0.0.17
+- Change id on twig template
+
 0.0.16
 - Remove RTE mode from package
 
 0.0.15
 - Add new `counter` and `readonly` variables
 - Fix README content
-
-0.0.14
-- Display now compatible with new Zeus-Core version
-
-0.0.13
-- New Olympus components compatibility
-- Change repository to be a part of Dionysos fields
-
-0.0.12
-- FIX: remove twig dependency from composer
 
 ## Contributing
 

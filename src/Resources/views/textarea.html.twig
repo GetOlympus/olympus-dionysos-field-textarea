@@ -1,11 +1,11 @@
 {% extends template_path %}
 
 {% block id %}{{ identifier }}{% endblock %}
-{% block label %}<label for="{{ identifier }}-textarea">{{ title|raw }}</label>{% endblock %}
+{% block label %}<label for="{{ identifier }}">{{ title|raw }}</label>{% endblock %}
 
 {% block field %}
     <div id="{{ identifier }}-wrap" class="dionysos-field textarea {{ mode }}">
-        <textarea name="{{ name }}" id="{{ identifier }}-textarea" class="large-text" rows="{{ rows }}" placeholder="{{ placeholder }}"{{ readonly ? ' readonly' : '' }}>{{ value }}</textarea>
+        <textarea name="{{ name }}" id="{{ identifier }}" class="large-text" rows="{{ rows }}" placeholder="{{ placeholder }}"{{ readonly ? ' readonly' : '' }}>{{ value }}</textarea>
 
         {% if counter %}
             <span class="counter"><b></b> {{ t_length_label }}</span>
