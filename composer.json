@@ -1,8 +1,8 @@
 {
   "name": "getolympus/olympus-dionysos-field-textarea",
   "type": "olympus-field",
-  "description": "Textarea / RTE field, this component is a part of the Olympus Dionysos fields.",
-  "keywords": ["olympus", "dionysos", "textarea", "field", "custom", "rte", "framework", "php", "wordpress"],
+  "description": "Textarea field, this component is a part of the Olympus Dionysos fields.",
+  "keywords": ["olympus", "dionysos", "textarea", "field", "custom", "framework", "php", "wordpress"],
   "homepage": "https://github.com/GetOlympus/olympus-dionysos-field-textarea",
   "license": "MIT",
   "authors": [
