@@ -1,4 +1,12 @@
+<img src="https://github.com/GetOlympus/olympus-dionysos-field-textarea/blob/master/assets/field-textarea.png" align="left" />
+
 # Dionysos Textarea Field
+
+[![Olympus Component][olympus-image]][olympus-url]
+[![CodeFactor Grade][codefactor-image]][codefactor-url]
+[![Packagist Version][packagist-image]][packagist-url]
+[![MIT][license-image]][license-blob]
+
 > This component is a part of the **Olympus Dionysos fields** for **WordPress**.  
 > Adds a counter JS component on textarea.
 
@@ -8,16 +16,9 @@ composer require getolympus/olympus-dionysos-field-textarea
 
 ---
 
-[![Olympus Component][olympus-image]][olympus-url]
-[![CodeFactor Grade][codefactor-image]][codefactor-url]
-[![Packagist Version][packagist-image]][packagist-url]
-[![MIT][license-image]][license-blob]
+## Table of contents
 
----
-
-<p align="center">
-    <img src="https://github.com/GetOlympus/olympus-dionysos-field-textarea/blob/master/assets/field-textarea-64.png" />
-</p>
+[Field initialization](#field-initialization) • [Variables definition](#variables-definition) • [Texts definition](#texts-definition) • [Retrive data](#retrive-data) • [Release History](#release-history) • [Contributing](#contributing)
 
 ---
 
@@ -75,15 +76,11 @@ echo '<pre>'.htmlspecialchars($textarea).'</pre>';
 
 ## Release History
 
-0.0.17
-- Change id on twig template
-
-0.0.16
-- Remove RTE mode from package
-
-0.0.15
-- Add new `counter` and `readonly` variables
-- Fix README content
+| Version | Note |
+| :------ | :--- |
+| 0.0.17  | Change id on twig template |
+| 0.0.16  | Remove RTE mode from package |
+| 0.0.15  | Add new `counter` and `readonly` variables<br/>Fix README content |
 
 ## Contributing
 
