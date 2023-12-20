@@ -12,9 +12,11 @@
 
             <script>
                 (function($) {
-                    $("#{{ identifier }}-wrap").dionysosTextarea({
-                        counter: ".counter b",
-                        field: "textarea",
+                    $(document).ready(function() {
+                        $("#{{ identifier }}-wrap").dionysosTextarea({
+                            counter: ".counter b",
+                            field: "textarea",
+                        });
                     });
                 })(jQuery);
             </script>

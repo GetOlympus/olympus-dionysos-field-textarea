@@ -78,9 +78,9 @@ echo '<pre>'.htmlspecialchars($textarea).'</pre>';
 
 | Version | Note |
 | :------ | :--- |
+| 0.0.18  | Fix jQuery integration on domReady |
 | 0.0.17  | Change id on twig template |
 | 0.0.16  | Remove RTE mode from package |
-| 0.0.15  | Add new `counter` and `readonly` variables<br/>Fix README content |
 
 ## Contributing
 
